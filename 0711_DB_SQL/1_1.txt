@@ -1,0 +1,6 @@
+SELECT CustomerName as Name, IFNULL(round(sum(Price * Quantity),2),0) as Total_Money
+FROM Orders as O
+FULL JOIN Customers as C On O.CustomerID = C.CustomerID
+LEFT Join OrderDetails as D on O.OrderID = D.OrderID
+LEFT Join Products as P on D.ProductID = P.ProductID
+GROUP BY CustomerName
